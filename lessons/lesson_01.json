@@ -1,0 +1,59 @@
+{
+    "lesson_number": 1,
+    "lesson_title": "Basic Sentence Structure and 이다/아니다",
+    "grammar_rules": [
+        {
+            "rule_id": "copula_basic",
+            "title": "The copula 이다 (to be)",
+            "explanation": "Korean uses 이다 to connect a subject with a noun. It changes form based on whether the noun ends in a consonant or vowel.",
+            "pattern": "[Subject]은/는 [Noun]이다/예요",
+            "formality_note": "이다 is dictionary form, 예요/이에요 is polite spoken form"
+        }
+    ],
+    "vocabulary": [
+        {"korean": "학생", "romanization": "haksaeng", "english": "student"},
+        {"korean": "선생님", "romanization": "seonsaengnim", "english": "teacher"},
+        {"korean": "한국사람", "romanization": "hanguksaram", "english": "Korean person"},
+        {"korean": "미국사람", "romanization": "migugsaram", "english": "American person"},
+        {"korean": "의사", "romanization": "uisa", "english": "doctor"},
+        {"korean": "간호사", "romanization": "ganhosa", "english": "nurse"}
+    ],
+    "example_sentences": [
+        {
+            "korean": "저는 학생이에요.",
+            "romanization": "jeoneun haksaeng-ieyo.",
+            "english": "I am a student.",
+            "grammar_focus": "copula_basic",
+            "formality": "polite"
+        },
+        {
+            "korean": "김선생님은 한국사람입니다.",
+            "romanization": "kim-seonsaengnim-eun hanguksaram-imnida.",
+            "english": "Teacher Kim is Korean.",
+            "grammar_focus": "copula_basic", 
+            "formality": "formal"
+        }
+    ],
+    "exercises": [
+        {
+            "type": "multiple_choice",
+            "question": "Complete: 나는 ___.",
+            "options": ["학생이다", "학생을", "학생에게", "학생의"],
+            "correct": 0,
+            "explanation": "Use 이다 after consonant-ending nouns"
+        },
+        {
+            "type": "syllable_choice",
+            "sentence": "저는 ___이에요.",
+            "hint": "student",
+            "syllable_options": ["학생", "선생님", "의사", "간호사"],
+            "correct": 0
+        },
+        {
+            "type": "word_building",
+            "question": "Build the word for 'teacher':",
+            "target": "선생님",
+            "syllable_parts": ["선", "생", "님", "학", "사", "의"]
+        }
+    ]
+}
