@@ -29,186 +29,36 @@ class KoreanLearningApp:
         self.create_widgets()
         self.show_lesson_selection()
     
-    def create_button(self, parent, text, command, style="default", **kwargs):
-        """Create standardized buttons with consistent styling"""
-        styles = {
-            "default": {
-                "font": ('Arial', 14, 'bold'),
-                "bg": '#ffffff',
-                "fg": '#000000',
-                "activebackground": '#f3f4f6',
-                "activeforeground": '#000000',
-                "highlightbackground": '#ffffff',
-                "padx": 15,
-                "pady": 8,
-                "relief": tk.FLAT,
-                "bd": 1,
-                "borderwidth": 1
-            },
-            "nav": {
-                "font": ('Arial', 14, 'bold'),
-                "bg": '#ffffff',
-                "fg": '#000000',
-                "activebackground": '#f3f4f6',
-                "activeforeground": '#000000',
-                "highlightbackground": '#ffffff',
-                "padx": 15,
-                "pady": 8,
-                "relief": tk.FLAT,
-                "bd": 1,
-                "borderwidth": 1
-            },
-            "lesson_select": {
-                "font": ('Arial', 16, 'bold'),
-                "bg": '#f9fafb',
-                "fg": '#1f2937',
-                "activebackground": '#e5e7eb',
-                "activeforeground": '#1f2937',
-                "padx": 20,
-                "pady": 15,
-                "relief": tk.SOLID,
-                "bd": 1
-            },
-            "lesson_completed": {
-                "font": ('Arial', 16, 'bold'),
-                "bg": '#d1fae5',
-                "fg": '#065f46',
-                "activebackground": '#a7f3d0',
-                "activeforeground": '#065f46',
-                "padx": 20,
-                "pady": 15,
-                "relief": tk.SOLID,
-                "bd": 1
-            },
-            "exercise": {
-                "font": ('Arial', 16),
-                "bg": '#f9fafb',
-                "fg": '#1f2937',
-                "padx": 20,
-                "pady": 10,
-                "relief": tk.SOLID,
-                "bd": 1
-            },
-            "korean": {
-                "font": ('Arial', 18, 'bold'),
-                "bg": '#f9fafb',
-                "fg": '#dc2626',
-                "padx": 20,
-                "pady": 10,
-                "relief": tk.SOLID,
-                "bd": 1
-            },
-            "action": {
-                "font": ('Arial', 14, 'bold'),
-                "bg": '#059669',
-                "fg": 'white',
-                "padx": 15,
-                "pady": 8,
-                "relief": tk.RAISED,
-                "bd": 2
-            },
-            "danger": {
-                "font": ('Arial', 14),
-                "bg": '#dc2626',
-                "fg": 'white',
-                "padx": 15,
-                "pady": 8,
-                "relief": tk.RAISED,
-                "bd": 2
-            },
-            "back": {
-                "font": ('Arial', 14, 'bold'),
-                "bg": '#ffffff',
-                "fg": '#000000',
-                "activebackground": '#f3f4f6',
-                "activeforeground": '#000000',
-                "highlightbackground": '#ffffff',
-                "padx": 15,
-                "pady": 8,
-                "relief": tk.FLAT,
-                "bd": 1,
-                "borderwidth": 1
-            }
-        }
-        
-        button_style = styles.get(style, styles["default"])
-        button_style.update(kwargs)
-        
-        return tk.Button(parent, text=text, command=command, **button_style)
+    def create_button(self, parent, text, command, 
+                     font=('Arial', 14, 'bold'), 
+                     bg='#ffffff', fg='#000000',
+                     activebackground='#f3f4f6', activeforeground='#000000',
+                     padx=15, pady=8, 
+                     relief=tk.FLAT, bd=1, borderwidth=1,
+                     **kwargs):
+        """Create a button with customizable parameters"""
+        return tk.Button(parent, text=text, command=command,
+                        font=font, bg=bg, fg=fg,
+                        activebackground=activebackground, activeforeground=activeforeground,
+                        highlightbackground=bg,
+                        padx=padx, pady=pady,
+                        relief=relief, bd=bd, borderwidth=borderwidth,
+                        **kwargs)
     
-    def create_label(self, parent, text, style="default", **kwargs):
-        """Create standardized labels with consistent styling"""
-        styles = {
-            "title": {
-                "font": ('Arial', 24, 'bold'),
-                "bg": '#ffffff',
-                "fg": '#1f2937'
-            },
-            "subtitle": {
-                "font": ('Arial', 20, 'bold'),
-                "bg": '#ffffff',
-                "fg": '#1f2937'
-            },
-            "heading": {
-                "font": ('Arial', 18, 'bold'),
-                "bg": '#ffffff',
-                "fg": '#1f2937'
-            },
-            "body": {
-                "font": ('Arial', 16),
-                "bg": '#ffffff',
-                "fg": '#374151',
-                "justify": tk.LEFT
-            },
-            "korean": {
-                "font": ('Arial', 20, 'bold'),
-                "bg": '#f9fafb',
-                "fg": '#dc2626'
-            },
-            "romanization": {
-                "font": ('Arial', 14, 'italic'),
-                "bg": '#f9fafb',
-                "fg": '#6b7280'
-            },
-            "english": {
-                "font": ('Arial', 16),
-                "bg": '#f9fafb',
-                "fg": '#1f2937'
-            },
-            "hint": {
-                "font": ('Arial', 14, 'italic'),
-                "bg": '#ffffff',
-                "fg": '#6b7280'
-            },
-            "progress": {
-                "font": ('Arial', 14),
-                "bg": '#ffffff',
-                "fg": '#059669'
-            }
-        }
-        
-        label_style = styles.get(style, styles["body"])
-        label_style.update(kwargs)
-        
-        return tk.Label(parent, text=text, **label_style)
+    def create_label(self, parent, text,
+                    font=('Arial', 16), 
+                    bg='#ffffff', fg='#374151',
+                    justify=tk.LEFT,
+                    **kwargs):
+        """Create a label with customizable parameters"""
+        return tk.Label(parent, text=text,
+                       font=font, bg=bg, fg=fg,
+                       justify=justify,
+                       **kwargs)
     
-    def create_content_frame(self, parent, style="default", **kwargs):
-        """Create standardized content frames"""
-        styles = {
-            "default": {
-                "bg": '#ffffff'
-            },
-            "card": {
-                "bg": '#f9fafb',
-                "relief": tk.SOLID,
-                "bd": 1
-            }
-        }
-        
-        frame_style = styles.get(style, styles["default"])
-        frame_style.update(kwargs)
-        
-        return tk.Frame(parent, **frame_style)
+    def create_content_frame(self, parent, bg='#ffffff', **kwargs):
+        """Create a frame with customizable parameters"""
+        return tk.Frame(parent, bg=bg, **kwargs)
     
     def create_widgets(self):
         # Main frame
@@ -242,9 +92,8 @@ class KoreanLearningApp:
             ("Exercises", self.show_exercises)
         ]
         
-        for i, (text, command) in enumerate(nav_buttons):
-            style = "back" if i == 0 else "nav"
-            btn = self.create_button(self.nav_frame, text, command, style=style)
+        for text, command in nav_buttons:
+            btn = self.create_button(self.nav_frame, text, command)
             btn.pack(side=tk.LEFT, padx=(0, 10))
         
         self.nav_frame.pack(fill=tk.X, pady=(0, 20))
@@ -268,23 +117,30 @@ class KoreanLearningApp:
             widget.destroy()
         
         # Title
-        title = self.create_label(self.top_frame, "Korean Learning App - Select Lesson", style="title")
+        title = self.create_label(self.top_frame, "Korean Learning App - Select Lesson", 
+                                 font=('Arial', 24, 'bold'), fg='#1f2937')
         title.pack(pady=(0, 20))
         
         # Progress summary
         progress = self.lesson_manager.get_progress_summary()
         progress_text = f"Progress: {progress['completed_lessons']}/{progress['total_lessons']} lessons completed ({progress['completion_percentage']:.0f}%)"
         
-        progress_label = self.create_label(self.top_frame, progress_text, style="progress")
-        progress_label.pack(pady=(0, 20))
+        progress_label = self.create_label(self.top_frame, progress_text, 
+                                          font=('Arial', 14), fg='#059669')
+        progress_label.pack(pady=(0, 10))
+        
+        # Vocabulary review button
+        vocab_review_btn = self.create_button(self.top_frame, "📚 Review All Vocabulary", 
+                                            self.show_vocabulary_review, 
+                                            bg='#059669', fg='white', relief=tk.RAISED, bd=2)
+        vocab_review_btn.pack(pady=(0, 20))
         
         # Lesson list
         lessons = self.lesson_manager.get_available_lessons()
         
         if not lessons:
             no_lessons = self.create_label(self.content_frame, 
-                                         "No lessons found. Please add lesson files to the 'lessons' folder.", 
-                                         style="body")
+                                         "No lessons found. Please add lesson files to the 'lessons' folder.")
             no_lessons.pack(pady=50)
             return
         
@@ -310,7 +166,7 @@ class KoreanLearningApp:
     
     def create_lesson_button(self, parent, lesson):
         """Create a button for lesson selection"""
-        lesson_frame = self.create_content_frame(parent, style="card")
+        lesson_frame = self.create_content_frame(parent, bg='#f9fafb', relief=tk.SOLID, bd=1)
         lesson_frame.pack(fill=tk.X, pady=5, padx=10)
         
         is_completed = self.lesson_manager.is_lesson_completed(lesson["number"])
@@ -319,11 +175,22 @@ class KoreanLearningApp:
         lesson_title = f"Lesson {lesson['number']}: {lesson['title']}"
         status = " ✓" if is_completed else ""
         
-        button_style = "lesson_completed" if is_completed else "lesson_select"
+        # Different colors for completed vs incomplete lessons
+        if is_completed:
+            bg_color = '#d1fae5'
+            fg_color = '#065f46'
+            active_bg = '#a7f3d0'
+        else:
+            bg_color = '#f9fafb'
+            fg_color = '#1f2937'
+            active_bg = '#e5e7eb'
         
         lesson_btn = self.create_button(lesson_frame, lesson_title + status,
                                       lambda l=lesson: self.select_lesson(l["number"]),
-                                      style=button_style)
+                                      font=('Arial', 16, 'bold'),
+                                      bg=bg_color, fg=fg_color,
+                                      activebackground=active_bg, activeforeground=fg_color,
+                                      padx=20, pady=15, relief=tk.SOLID, bd=1)
         lesson_btn.pack(fill=tk.X, padx=10, pady=10)
     
     def select_lesson(self, lesson_number):
@@ -334,8 +201,7 @@ class KoreanLearningApp:
             # Show error message
             self.clear_content()
             error_label = self.create_label(self.content_frame, 
-                                          f"Error loading lesson {lesson_number}. Please check the lesson file.", 
-                                          style="body")
+                                          f"Error loading lesson {lesson_number}. Please check the lesson file.")
             error_label.pack(pady=50)
             return
         
@@ -359,7 +225,7 @@ class KoreanLearningApp:
             widget.destroy()
         
         lesson_info = f"Lesson {self.current_lesson['lesson_number']}: {self.current_lesson['lesson_title']}"
-        title = self.create_label(self.top_frame, lesson_info, style="title")
+        title = self.create_label(self.top_frame, lesson_info, font=('Arial', 24, 'bold'), fg='#1f2937')
         title.pack(pady=(0, 10))
         
         # Show completion status
@@ -378,19 +244,19 @@ class KoreanLearningApp:
 
 Use the navigation buttons above to explore different sections of this lesson."""
         
-        overview_label = self.create_label(self.content_frame, overview_text, style="body")
+        overview_label = self.create_label(self.content_frame, overview_text)
         overview_label.pack(anchor=tk.W, pady=30)
     
     def show_vocabulary(self):
         self.clear_content()
         
-        title = self.create_label(self.content_frame, "Vocabulary", style="subtitle")
+        title = self.create_label(self.content_frame, "Vocabulary", font=('Arial', 20, 'bold'), fg='#1f2937')
         title.pack(pady=(0, 20), anchor=tk.W)
         
         # Calculate pagination
         vocab_list = self.current_lesson["vocabulary"]
         if not vocab_list:
-            no_vocab = self.create_label(self.content_frame, "No vocabulary items in this lesson.", style="body")
+            no_vocab = self.create_label(self.content_frame, "No vocabulary items in this lesson.")
             no_vocab.pack(pady=20)
             return
             
@@ -401,21 +267,24 @@ Use the navigation buttons above to explore different sections of this lesson.""
         # Show page info
         page_info = self.create_label(self.content_frame, 
                                     f"Page {self.current_vocab_page + 1} of {total_pages}", 
-                                    style="hint")
+                                    font=('Arial', 14, 'italic'), fg='#6b7280')
         page_info.pack(pady=(0, 15), anchor=tk.W)
         
         # Show vocabulary for current page
         for vocab in vocab_list[start_idx:end_idx]:
-            vocab_frame = self.create_content_frame(self.content_frame, style="card")
+            vocab_frame = self.create_content_frame(self.content_frame, bg='#f9fafb', relief=tk.SOLID, bd=1)
             vocab_frame.pack(fill=tk.X, pady=10, padx=0)
             
-            korean_label = self.create_label(vocab_frame, vocab["korean"], style="korean")
+            korean_label = self.create_label(vocab_frame, vocab["korean"], 
+                                           font=('Arial', 20, 'bold'), fg='#dc2626', bg='#f9fafb')
             korean_label.pack(anchor=tk.W, padx=15, pady=(10, 5))
             
-            rom_label = self.create_label(vocab_frame, f"[{vocab['romanization']}]", style="romanization")
+            rom_label = self.create_label(vocab_frame, f"[{vocab['romanization']}]", 
+                                        font=('Arial', 14, 'italic'), fg='#6b7280', bg='#f9fafb')
             rom_label.pack(anchor=tk.W, padx=15)
             
-            eng_label = self.create_label(vocab_frame, vocab["english"], style="english")
+            eng_label = self.create_label(vocab_frame, vocab["english"], 
+                                        font=('Arial', 16), fg='#1f2937', bg='#f9fafb')
             eng_label.pack(anchor=tk.W, padx=15, pady=(0, 10))
         
         # Navigation buttons
@@ -450,11 +319,11 @@ Use the navigation buttons above to explore different sections of this lesson.""
     def show_grammar(self):
         self.clear_content()
         
-        title = self.create_label(self.content_frame, "Grammar", style="subtitle")
+        title = self.create_label(self.content_frame, "Grammar", font=('Arial', 20, 'bold'), fg='#1f2937')
         title.pack(pady=(0, 20), anchor=tk.W)
         
         if not self.current_lesson["grammar_rules"]:
-            no_grammar = self.create_label(self.content_frame, "No grammar rules in this lesson.", style="body")
+            no_grammar = self.create_label(self.content_frame, "No grammar rules in this lesson.")
             no_grammar.pack(pady=20)
             return
         
@@ -467,18 +336,19 @@ Use the navigation buttons above to explore different sections of this lesson.""
     
     def create_grammar_rule_display(self, rule):
         """Create display for a single grammar rule"""
-        rule_frame = self.create_content_frame(self.content_frame, style="card")
+        rule_frame = self.create_content_frame(self.content_frame, bg='#f9fafb', relief=tk.SOLID, bd=1)
         rule_frame.pack(fill=tk.X, pady=10, padx=0)
         
-        rule_title = self.create_label(rule_frame, rule["title"], style="heading", bg='#f9fafb')
+        rule_title = self.create_label(rule_frame, rule["title"], 
+                                     font=('Arial', 18, 'bold'), fg='#1f2937', bg='#f9fafb')
         rule_title.pack(anchor=tk.W, padx=15, pady=(10, 5))
         
         explanation = self.create_label(rule_frame, rule["explanation"], 
-                                      style="body", bg='#f9fafb', wraplength=800)
+                                      bg='#f9fafb', wraplength=800)
         explanation.pack(anchor=tk.W, padx=15, pady=5)
         
         pattern = self.create_label(rule_frame, f"Pattern: {rule['pattern']}", 
-                                  style="hint", bg='#f9fafb')
+                                  font=('Arial', 14, 'italic'), fg='#6b7280', bg='#f9fafb')
         pattern.pack(anchor=tk.W, padx=15, pady=5)
         
         if "formality_note" in rule:
@@ -488,27 +358,31 @@ Use the navigation buttons above to explore different sections of this lesson.""
     
     def create_example_sentences_display(self):
         """Create display for example sentences"""
-        examples_title = self.create_label(self.content_frame, "Example Sentences", style="heading")
+        examples_title = self.create_label(self.content_frame, "Example Sentences", 
+                                         font=('Arial', 18, 'bold'), fg='#1f2937')
         examples_title.pack(pady=(30, 15), anchor=tk.W)
         
         for example in self.current_lesson["example_sentences"]:
-            example_frame = self.create_content_frame(self.content_frame, style="card")
+            example_frame = self.create_content_frame(self.content_frame, bg='#f9fafb', relief=tk.SOLID, bd=1)
             example_frame.pack(fill=tk.X, pady=5, padx=0)
             
-            korean_label = self.create_label(example_frame, example["korean"], style="korean")
+            korean_label = self.create_label(example_frame, example["korean"], 
+                                           font=('Arial', 20, 'bold'), fg='#dc2626', bg='#f9fafb')
             korean_label.pack(anchor=tk.W, padx=15, pady=(10, 5))
             
-            rom_label = self.create_label(example_frame, example["romanization"], style="romanization")
+            rom_label = self.create_label(example_frame, example["romanization"], 
+                                        font=('Arial', 14, 'italic'), fg='#6b7280', bg='#f9fafb')
             rom_label.pack(anchor=tk.W, padx=15)
             
-            eng_label = self.create_label(example_frame, example["english"], style="english")
+            eng_label = self.create_label(example_frame, example["english"], 
+                                        font=('Arial', 16), fg='#1f2937', bg='#f9fafb')
             eng_label.pack(anchor=tk.W, padx=15, pady=(0, 10))
     
     def show_exercises(self):
         self.clear_content()
         
         if not self.current_lesson["exercises"]:
-            no_exercises = self.create_label(self.content_frame, "No exercises in this lesson.", style="body")
+            no_exercises = self.create_label(self.content_frame, "No exercises in this lesson.")
             no_exercises.pack(pady=50)
             return
         
@@ -520,7 +394,7 @@ Use the navigation buttons above to explore different sections of this lesson.""
         
         title = self.create_label(self.content_frame, 
                                 f"Exercise {self.current_exercise_index + 1} of {len(self.current_lesson['exercises'])}", 
-                                style="subtitle")
+                                font=('Arial', 20, 'bold'), fg='#1f2937')
         title.pack(pady=(0, 30))
         
         exercise_handlers = {
@@ -546,48 +420,53 @@ Use the navigation buttons above to explore different sections of this lesson.""
         button_frame.pack(pady=20)
         
         restart_btn = self.create_button(button_frame, "Restart Exercises", 
-                                       self.restart_exercises, style="action")
+                                       self.restart_exercises, 
+                                       bg='#059669', fg='white', relief=tk.RAISED, bd=2)
         restart_btn.pack(side=tk.LEFT, padx=10)
         
         lessons_btn = self.create_button(button_frame, "Back to Lessons", 
-                                       self.show_lesson_selection, style="back")
+                                       self.show_lesson_selection)
         lessons_btn.pack(side=tk.LEFT, padx=10)
         
         # Show next lesson button if available
         next_lesson_num = self.lesson_manager.get_next_lesson()
         if self.lesson_manager.get_lesson_info(next_lesson_num):
             next_btn = self.create_button(button_frame, f"Next Lesson ({next_lesson_num})", 
-                                        lambda: self.select_lesson(next_lesson_num), style="action")
+                                        lambda: self.select_lesson(next_lesson_num), 
+                                        bg='#059669', fg='white', relief=tk.RAISED, bd=2)
             next_btn.pack(side=tk.LEFT, padx=10)
     
     def show_multiple_choice_exercise(self, exercise):
-        question_label = self.create_label(self.content_frame, exercise["question"], style="body")
+        question_label = self.create_label(self.content_frame, exercise["question"])
         question_label.pack(pady=(0, 20))
         
         for i, option in enumerate(exercise["options"]):
             btn = self.create_button(self.content_frame, option,
                                    lambda idx=i: self.check_multiple_choice(exercise, idx),
-                                   style="exercise")
+                                   font=('Arial', 16), bg='#f9fafb', fg='#1f2937',
+                                   padx=20, pady=10, relief=tk.SOLID, bd=1)
             btn.pack(pady=5, fill=tk.X, padx=50)
     
     def show_syllable_choice_exercise(self, exercise):
         sentence_parts = exercise["sentence"].split("___")
         sentence_text = f"Complete the sentence: {sentence_parts[0]}____{sentence_parts[1] if len(sentence_parts) > 1 else ''}"
         
-        question_label = self.create_label(self.content_frame, sentence_text, style="body")
+        question_label = self.create_label(self.content_frame, sentence_text)
         question_label.pack(pady=(0, 10))
         
-        hint_label = self.create_label(self.content_frame, f"Hint: {exercise['hint']}", style="hint")
+        hint_label = self.create_label(self.content_frame, f"Hint: {exercise['hint']}", 
+                                     font=('Arial', 14, 'italic'), fg='#6b7280')
         hint_label.pack(pady=(0, 20))
         
         for i, option in enumerate(exercise["syllable_options"]):
             btn = self.create_button(self.content_frame, option,
                                    lambda idx=i: self.check_syllable_choice(exercise, idx),
-                                   style="korean")
+                                   font=('Arial', 18, 'bold'), bg='#f9fafb', fg='#dc2626',
+                                   padx=20, pady=10, relief=tk.SOLID, bd=1)
             btn.pack(pady=5, fill=tk.X, padx=50)
     
     def show_word_building_exercise(self, exercise):
-        question_label = self.create_label(self.content_frame, exercise["question"], style="body")
+        question_label = self.create_label(self.content_frame, exercise["question"])
         question_label.pack(pady=(0, 20))
         
         # Show current word being built
@@ -619,11 +498,13 @@ Use the navigation buttons above to explore different sections of this lesson.""
         button_frame = self.create_content_frame(self.content_frame)
         button_frame.pack(pady=20)
         
-        clear_btn = self.create_button(button_frame, "Clear", self.clear_built_word, style="danger")
+        clear_btn = self.create_button(button_frame, "Clear", self.clear_built_word, 
+                                     bg='#dc2626', fg='white', relief=tk.RAISED, bd=2)
         clear_btn.pack(side=tk.LEFT, padx=10)
         
         submit_btn = self.create_button(button_frame, "Submit", 
-                                      lambda: self.check_word_building(exercise), style="action")
+                                      lambda: self.check_word_building(exercise), 
+                                      bg='#059669', fg='white', relief=tk.RAISED, bd=2)
         submit_btn.pack(side=tk.LEFT, padx=10)
     
     def add_syllable(self, syllable, exercise):
@@ -671,7 +552,7 @@ Use the navigation buttons above to explore different sections of this lesson.""
         result_frame.pack(pady=50, padx=50, fill=tk.BOTH)
         
         result_label = self.create_label(result_frame, result_text, 
-                                       style="body", bg=bg_color, wraplength=600)
+                                       bg=bg_color, wraplength=600)
         result_label.pack(pady=30, padx=30)
         
         next_btn = self.create_button(result_frame, "Next Exercise", self.next_exercise)
@@ -686,6 +567,199 @@ Use the navigation buttons above to explore different sections of this lesson.""
         self.current_exercise_index = 0
         self.exercises_completed_count = 0
         self.show_exercises()
+    
+    def show_vocabulary_review(self):
+        """Show vocabulary review for all completed lessons plus current lesson"""
+        self.clear_content()
+        
+        # Clear top frame and show review title
+        for widget in self.top_frame.winfo_children():
+            widget.destroy()
+        
+        title = self.create_label(self.top_frame, "📚 Vocabulary Review", font=('Arial', 24, 'bold'), fg='#1f2937')
+        title.pack(pady=(0, 10))
+        
+        # Back button
+        back_btn = self.create_button(self.top_frame, "← Back to Lessons", 
+                                    self.show_lesson_selection)
+        back_btn.pack(pady=(0, 20))
+        
+        # Get vocabulary from completed lessons + current lesson
+        vocab_by_lesson = self.get_learned_vocabulary()
+        
+        if not vocab_by_lesson:
+            no_vocab = self.create_label(self.content_frame, 
+                                       "No vocabulary learned yet. Complete some lessons to see your vocabulary here!")
+            no_vocab.pack(pady=50)
+            return
+        
+        # Create vocabulary display options
+        self.vocab_review_mode = "by_lesson"  # or "all_words"
+        self.create_vocabulary_review_controls()
+        self.display_vocabulary_review(vocab_by_lesson)
+    
+    def create_vocabulary_review_controls(self):
+        """Create controls for vocabulary review display"""
+        controls_frame = self.create_content_frame(self.content_frame)
+        controls_frame.pack(fill=tk.X, pady=(0, 20))
+        
+        mode_label = self.create_label(controls_frame, "View Mode:")
+        mode_label.pack(side=tk.LEFT, padx=(0, 10))
+        
+        by_lesson_btn = self.create_button(controls_frame, "By Lesson", 
+                                         lambda: self.switch_vocab_mode("by_lesson"))
+        by_lesson_btn.pack(side=tk.LEFT, padx=5)
+        
+        all_words_btn = self.create_button(controls_frame, "All Words", 
+                                         lambda: self.switch_vocab_mode("all_words"))
+        all_words_btn.pack(side=tk.LEFT, padx=5)
+        
+        # Stats
+        vocab_by_lesson = self.get_learned_vocabulary()
+        total_words = sum(len(words) for words in vocab_by_lesson.values())
+        total_lessons = len(vocab_by_lesson)
+        
+        stats_text = f"Total: {total_words} words from {total_lessons} lessons"
+        stats_label = self.create_label(controls_frame, stats_text, 
+                                      font=('Arial', 14, 'italic'), fg='#6b7280')
+        stats_label.pack(side=tk.RIGHT)
+    
+    def switch_vocab_mode(self, mode):
+        """Switch between vocabulary review modes"""
+        self.vocab_review_mode = mode
+        vocab_by_lesson = self.get_learned_vocabulary()
+        
+        # Clear existing display
+        for widget in self.content_frame.winfo_children():
+            if widget.winfo_class() != "Frame":  # Keep controls frame
+                widget.destroy()
+            elif hasattr(widget, 'vocab_display'):  # Remove vocab display frames
+                widget.destroy()
+        
+        self.display_vocabulary_review(vocab_by_lesson)
+    
+    def get_learned_vocabulary(self):
+        """Get vocabulary from completed lessons plus current lesson"""
+        vocab_by_lesson = {}
+        
+        # Get completed lessons
+        completed_lessons = self.lesson_manager.progress_data["completed_lessons"]
+        current_lesson_num = self.lesson_manager.get_current_lesson()
+        
+        # Include current lesson in review
+        lessons_to_include = set(completed_lessons + [current_lesson_num])
+        
+        for lesson_num in sorted(lessons_to_include):
+            lesson_data = self.lesson_manager.load_lesson(lesson_num)
+            if lesson_data and lesson_data.get("vocabulary"):
+                lesson_title = f"Lesson {lesson_num}: {lesson_data.get('lesson_title', 'Unknown')}"
+                vocab_by_lesson[lesson_title] = lesson_data["vocabulary"]
+        
+        return vocab_by_lesson
+    
+    def display_vocabulary_review(self, vocab_by_lesson):
+        """Display vocabulary review based on current mode"""
+        # Create scrollable frame for vocabulary
+        canvas = tk.Canvas(self.content_frame, bg='#ffffff')
+        scrollbar = ttk.Scrollbar(self.content_frame, orient="vertical", command=canvas.yview)
+        scrollable_frame = self.create_content_frame(canvas)
+        scrollable_frame.vocab_display = True  # Mark as vocab display frame
+        
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        
+        if self.vocab_review_mode == "by_lesson":
+            self.display_vocab_by_lesson(scrollable_frame, vocab_by_lesson)
+        else:
+            self.display_all_vocab_words(scrollable_frame, vocab_by_lesson)
+        
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+    
+    def display_vocab_by_lesson(self, parent, vocab_by_lesson):
+        """Display vocabulary organized by lesson"""
+        for lesson_title, vocabulary in vocab_by_lesson.items():
+            # Lesson header
+            lesson_header = self.create_label(parent, lesson_title, 
+                                            font=('Arial', 18, 'bold'), fg='#1f2937')
+            lesson_header.pack(anchor=tk.W, pady=(20, 10))
+            
+            # Vocabulary cards for this lesson
+            for vocab in vocabulary:
+                vocab_frame = self.create_content_frame(parent, bg='#f9fafb', relief=tk.SOLID, bd=1)
+                vocab_frame.pack(fill=tk.X, pady=5, padx=10)
+                
+                # Horizontal layout for compact display
+                content_frame = self.create_content_frame(vocab_frame)
+                content_frame.pack(fill=tk.X, padx=15, pady=10)
+                
+                korean_label = self.create_label(content_frame, vocab["korean"], 
+                                               font=('Arial', 18, 'bold'), fg='#dc2626', bg='#f9fafb')
+                korean_label.pack(side=tk.LEFT)
+                
+                rom_label = self.create_label(content_frame, f"[{vocab['romanization']}]", 
+                                            font=('Arial', 14, 'italic'), fg='#6b7280', bg='#f9fafb')
+                rom_label.pack(side=tk.LEFT, padx=(10, 0))
+                
+                eng_label = self.create_label(content_frame, f"- {vocab['english']}", 
+                                            font=('Arial', 16), fg='#1f2937', bg='#f9fafb')
+                eng_label.pack(side=tk.LEFT, padx=(10, 0))
+    
+    def display_all_vocab_words(self, parent, vocab_by_lesson):
+        """Display all vocabulary words in alphabetical order"""
+        # Flatten all vocabulary
+        all_vocab = []
+        for lesson_title, vocabulary in vocab_by_lesson.items():
+            for vocab in vocabulary:
+                vocab_with_lesson = vocab.copy()
+                vocab_with_lesson["lesson"] = lesson_title
+                all_vocab.append(vocab_with_lesson)
+        
+        # Sort by Korean word
+        all_vocab.sort(key=lambda x: x["korean"])
+        
+        # Display header
+        header = self.create_label(parent, f"All Vocabulary ({len(all_vocab)} words)", 
+                                 font=('Arial', 18, 'bold'), fg='#1f2937')
+        header.pack(anchor=tk.W, pady=(10, 20))
+        
+        # Display vocabulary
+        for vocab in all_vocab:
+            vocab_frame = self.create_content_frame(parent, bg='#f9fafb', relief=tk.SOLID, bd=1)
+            vocab_frame.pack(fill=tk.X, pady=3, padx=10)
+            
+            # Main content
+            content_frame = self.create_content_frame(vocab_frame)
+            content_frame.pack(fill=tk.X, padx=15, pady=8)
+            
+            # Korean and pronunciation
+            top_line = self.create_content_frame(content_frame)
+            top_line.pack(fill=tk.X)
+            
+            korean_label = self.create_label(top_line, vocab["korean"], 
+                                           font=('Arial', 18, 'bold'), fg='#dc2626', bg='#f9fafb')
+            korean_label.pack(side=tk.LEFT)
+            
+            rom_label = self.create_label(top_line, f"[{vocab['romanization']}]", 
+                                        font=('Arial', 14, 'italic'), fg='#6b7280', bg='#f9fafb')
+            rom_label.pack(side=tk.LEFT, padx=(10, 0))
+            
+            # English and lesson info
+            bottom_line = self.create_content_frame(content_frame)
+            bottom_line.pack(fill=tk.X)
+            
+            eng_label = self.create_label(bottom_line, vocab["english"], 
+                                        font=('Arial', 16), fg='#1f2937', bg='#f9fafb')
+            eng_label.pack(side=tk.LEFT)
+            
+            lesson_label = self.create_label(bottom_line, f"({vocab['lesson']})", 
+                                           font=('Arial', 12), fg='#6b7280', bg='#f9fafb')
+            lesson_label.pack(side=tk.RIGHT)
 
 if __name__ == "__main__":
     root = tk.Tk()

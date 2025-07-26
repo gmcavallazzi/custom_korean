@@ -1,0 +1,103 @@
+{
+    "lesson_number": 2,
+    "lesson_title": "Essential Particles",
+    "grammar_rules": [
+        {
+            "rule_id": "subject_particles",
+            "title": "Subject particles 이/가",
+            "explanation": "이/가 marks the subject of a sentence. Use 이 after consonants and 가 after vowels. This is different from the topic particle 은/는.",
+            "pattern": "[Subject]이/가 [Verb/Adjective]",
+            "formality_note": "Subject particles are used in all formality levels"
+        },
+        {
+            "rule_id": "object_particles", 
+            "title": "Object particles 을/를",
+            "explanation": "을/를 marks the direct object of a sentence. Use 을 after consonants and 를 after vowels.",
+            "pattern": "[Subject]이/가 [Object]을/를 [Verb]",
+            "formality_note": "Object particles can sometimes be omitted in casual speech"
+        },
+        {
+            "rule_id": "location_particle",
+            "title": "Location particle 에",
+            "explanation": "에 indicates location (at/in) or time (at/on). It's attached to nouns to show where or when something happens.",
+            "pattern": "[Place/Time]에 [Action]",
+            "formality_note": "에 is used consistently across all speech levels"
+        }
+    ],
+    "vocabulary": [
+        {"korean": "사과", "romanization": "sagwa", "english": "apple"},
+        {"korean": "물", "romanization": "mul", "english": "water"},
+        {"korean": "집", "romanization": "jip", "english": "house/home"},
+        {"korean": "학교", "romanization": "hakgyo", "english": "school"},
+        {"korean": "도서관", "romanization": "doseogwan", "english": "library"},
+        {"korean": "카페", "romanization": "kape", "english": "cafe"},
+        {"korean": "친구", "romanization": "chingu", "english": "friend"},
+        {"korean": "책", "romanization": "chaek", "english": "book"}
+    ],
+    "example_sentences": [
+        {
+            "korean": "친구가 사과를 먹어요.",
+            "romanization": "chingu-ga sagwa-reul meogeoyo.",
+            "english": "My friend eats an apple.",
+            "grammar_focus": "subject_particles,object_particles",
+            "formality": "polite"
+        },
+        {
+            "korean": "학생이 도서관에 있어요.",
+            "romanization": "haksaeng-i doseogwan-e isseoyo.",
+            "english": "The student is at the library.",
+            "grammar_focus": "subject_particles,location_particle",
+            "formality": "polite"
+        },
+        {
+            "korean": "저는 집에서 책을 읽어요.",
+            "romanization": "jeoneun jib-eseo chaek-eul ilgeoyo.",
+            "english": "I read a book at home.",
+            "grammar_focus": "object_particles,location_particle",
+            "formality": "polite"
+        }
+    ],
+    "exercises": [
+        {
+            "type": "multiple_choice",
+            "question": "Choose the correct particle: 친구___ 물을 마셔요.",
+            "options": ["가", "를", "에", "은"],
+            "correct": 0,
+            "explanation": "Use 가 after 친구 (ends in vowel) to mark the subject"
+        },
+        {
+            "type": "multiple_choice", 
+            "question": "Choose the correct particle: 학생이 사과___ 먹어요.",
+            "options": ["가", "를", "에", "은"],
+            "correct": 1,
+            "explanation": "Use 를 after 사과 (ends in vowel) to mark the direct object"
+        },
+        {
+            "type": "syllable_choice",
+            "sentence": "저는 ___에 가요.",
+            "hint": "school",
+            "syllable_options": ["학교", "도서관", "카페", "집"],
+            "correct": 0
+        },
+        {
+            "type": "syllable_choice",
+            "sentence": "친구가 ___을 마셔요.",
+            "hint": "water",
+            "syllable_options": ["사과", "물", "책", "집"],
+            "correct": 1
+        },
+        {
+            "type": "word_building",
+            "question": "Build the word for 'library':",
+            "target": "도서관",
+            "syllable_parts": ["도", "서", "관", "학", "교", "카", "페"]
+        },
+        {
+            "type": "multiple_choice",
+            "question": "Complete: 책이 도서관___ 있어요.",
+            "options": ["가", "를", "에", "은"],
+            "correct": 2,
+            "explanation": "Use 에 to indicate location 'at the library'"
+        }
+    ]
+}
